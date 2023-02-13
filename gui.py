@@ -82,6 +82,17 @@ def clearValues():
             cell.delete(0, "end")
 
 
+# Create buttons for solving and clearing the board
+getBtn = Button(window, command=getValues, text='Solve', width=10,
+                activebackground='light cyan', font=('Arial', 10, 'bold'))
+getBtn.grid(row=20, column=1, columnspan=5, pady=20)
+
+clearBtn = Button(window, command=clearValues, text='Clear', width=10,
+                  activebackground='light cyan', font=('Arial', 10, 'bold'))
+clearBtn.grid(row=20, column=5, columnspan=5, pady=20)
+
+
+
 # Main Loop
 draw9x9Grid()
 window.mainloop()
