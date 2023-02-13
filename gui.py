@@ -18,5 +18,14 @@ errorLabel.grid(row=20, column=1, columnspan=10, pady=20)
 solvedLable = Label(window, text="", fg="green", font=("Arial", 16))
 solvedLable.grid(row=20, column=1, columnspan=10, pady=20)
 
+cells = {}
+
+# Checking the validity of numbers
+def isValid(P):
+    out = (P.isdigit() or P=="") and len(P) < 2
+    return out
+
+reg = window.register(isValid)
+
 
 window.mainloop()
