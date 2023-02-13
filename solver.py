@@ -47,3 +47,11 @@ def solveSudoku(grid, row, col):
         # If not valid, then we need to backtrack
         # and try a new guess/number 
         grid[row][col] = -1
+
+
+# Solver
+def puzzleSolver(grid):
+    if solveSudoku(grid, 0, 0):
+        return grid
+    else:
+        return "no"

@@ -1,5 +1,5 @@
 from tkinter import *
-
+from solver import puzzleSolver
 
 window = Tk()
 window.title("Sudoku Solver")
@@ -69,10 +69,11 @@ def getValues():
                 rows.append(int(val))
 
         board.append(rows)
- 
+    update(board)
+
 
 # Function to clear board (called by clear button)
-def clearValues():
+def clear():
     errorLabel.configure(text="")
     solvedLable.configure(text="")
 
@@ -82,12 +83,24 @@ def clearValues():
             cell.delete(0, "end")
 
 
+# Update the values in Cells
+def update(s):
+    solve = puzzleSolver(s)
+    if solve != "no":
+        for rows in range(2, 11):
+            for col in range(1, 10):
+                cells[(rows, col)].delete(0, "end")
+                cells[(rows, col)].insert(0, solve[rows - 2][col - 1])
+            solvedLable.configure(text='Sudoku is SOLVED!')
+    else:
+        errorLabel.configure(text='Sudoku is UNSOLVABLE!')
+
 # Create buttons for solving and clearing the board
 getBtn = Button(window, command=getValues, text='Solve', width=10,
                 activebackground='light cyan', font=('Arial', 10, 'bold'))
 getBtn.grid(row=20, column=1, columnspan=5, pady=20)
 
-clearBtn = Button(window, command=clearValues, text='Clear', width=10,
+clearBtn = Button(window, command=clear, text='Clear', width=10,
                   activebackground='light cyan', font=('Arial', 10, 'bold'))
 clearBtn.grid(row=20, column=5, columnspan=5, pady=20)
 
