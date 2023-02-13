@@ -53,6 +53,24 @@ def draw9x9Grid():
                 color = "light yellow"
 
 
+# Call Sudoku solver def (called by solve button)
+def getValues():
+    board= []
+    errorLabel.configure(text="")
+    solvedLable.configure(text="")
+
+    for row in range(2, 11):
+        rows = []
+        for col in range(1, 10):
+            val = cells[(row, col)].get()
+            if val == "":
+                rows.append(0)
+            else:
+                rows.append(int(val))
+
+        board.append(rows)
+ 
+
 # Main Loop
 draw9x9Grid()
 window.mainloop()
