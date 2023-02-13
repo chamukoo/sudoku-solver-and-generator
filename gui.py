@@ -53,7 +53,7 @@ def draw9x9Grid():
                 color = "light yellow"
 
 
-# Call Sudoku solver def (called by solve button)
+# Function to get the values (called by solve button)
 def getValues():
     board= []
     errorLabel.configure(text="")
@@ -70,6 +70,17 @@ def getValues():
 
         board.append(rows)
  
+
+# Function to clear board (called by clear button)
+def clearValues():
+    errorLabel.configure(text="")
+    solvedLable.configure(text="")
+
+    for row in range(2, 11):
+        for col in range(1, 10):
+            cell = cells[(row, col)]
+            cell.delete(0, "end")
+
 
 # Main Loop
 draw9x9Grid()
