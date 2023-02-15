@@ -42,10 +42,9 @@ def draw9x9Grid():
                 color = "light yellow"
 
 
-board= []
-
 # Function to get the values (called by solve button)
 def access():
+    board= []
     errorLabel.configure(text="")
     solvedLabel.configure(text="")
 

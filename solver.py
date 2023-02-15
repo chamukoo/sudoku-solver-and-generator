@@ -45,7 +45,9 @@ def solveSudoku(grid, row, col):
 
         # If not valid, then we need to backtrack
         # and try a new guess/number 
-        grid[row][col] = -1
+        grid[row][col] = 0
+
+    return False
 
 
 # Solver
