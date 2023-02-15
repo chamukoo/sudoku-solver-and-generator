@@ -2,23 +2,9 @@ from tkinter import *
 from solver import puzzleSolver
 
 
-
 window = Tk()
 window.title("Sudoku Solver")
 window.geometry("370x480")
-
-
-label = Label(window, text="Welcome to Sudoku Generator and Solver!",
-              font=("Helvetica", 12), fg="black", pady = 10)
-label.grid(row=0, column=1,columnspan=10)
-
-# For unsolvavble sudoku puzzle
-errorLabel = Label(window, text="", fg="red", font=("Arial", 16))
-errorLabel.grid(row=20, column=1, columnspan=10, pady=20)
-
-# For solvable sudoku puzzle
-solvedLabel = Label(window, text="", fg="green", font=("Arial", 16))
-solvedLabel.grid(row=20, column=1, columnspan=10, pady=20)
 
 
 cells = {}
@@ -100,14 +86,27 @@ def update(s):
         errorLabel.configure(text='Sudoku is UNSOLVABLE!')
 
 
+
+label = Label(window, text="Welcome to Sudoku Solver!",
+              font=("Helvetica", 12), fg="black", pady = 10)
+label.grid(row=0, column=1,columnspan=10)
+
+# For unsolvavble sudoku puzzle
+errorLabel = Label(window, text="", fg="red", font=("Arial", 16))
+errorLabel.grid(row=20, column=1, columnspan=10, pady=20)
+
+# For solvable sudoku puzzle
+solvedLabel = Label(window, text="", fg="green", font=("Arial", 16))
+solvedLabel.grid(row=20, column=1, columnspan=10, pady=20)
+
 # Create buttons for solving and clearing the board
 getBtn = Button(window, command=access, text='Solve', width=10,
                 activebackground='light cyan', font=('Arial', 10, 'bold'))
-getBtn.grid(row=50, column=0, columnspan=5, pady=20)
+getBtn.grid(row=50, column=1, columnspan=5, pady=20)
 
 clearBtn = Button(window, command=clear, text='Clear', width=10,
                   activebackground='light cyan', font=('Arial', 10, 'bold'))
-clearBtn.grid(row=50, column=3, columnspan=5, pady=20)
+clearBtn.grid(row=50, column=5, columnspan=5, pady=20)
 
 
 # Main Loop
