@@ -1,6 +1,8 @@
 from tkinter import *
 from solver import puzzleSolver
 
+
+
 window = Tk()
 window.title("Sudoku Solver")
 window.geometry("370x480")
@@ -15,8 +17,9 @@ errorLabel = Label(window, text="", fg="red", font=("Arial", 16))
 errorLabel.grid(row=20, column=1, columnspan=10, pady=20)
 
 # For solvable sudoku puzzle
-solvedLable = Label(window, text="", fg="green", font=("Arial", 16))
-solvedLable.grid(row=20, column=1, columnspan=10, pady=20)
+solvedLabel = Label(window, text="", fg="green", font=("Arial", 16))
+solvedLabel.grid(row=20, column=1, columnspan=10, pady=20)
+
 
 cells = {}
 
@@ -53,11 +56,12 @@ def draw9x9Grid():
                 color = "light yellow"
 
 
+board= []
+
 # Function to get the values (called by solve button)
-def getValues():
-    board= []
+def access():
     errorLabel.configure(text="")
-    solvedLable.configure(text="")
+    solvedLabel.configure(text="")
 
     for row in range(2, 11):
         rows = []
@@ -75,7 +79,7 @@ def getValues():
 # Function to clear board (called by clear button)
 def clear():
     errorLabel.configure(text="")
-    solvedLable.configure(text="")
+    solvedLabel.configure(text="")
 
     for row in range(2, 11):
         for col in range(1, 10):
@@ -86,24 +90,24 @@ def clear():
 # Update the values in Cells
 def update(s):
     solve = puzzleSolver(s)
-    if solve != "no":
+    if solve != "solve":
         for rows in range(2, 11):
-            for col in range(1, 10):
-                cells[(rows, col)].delete(0, "end")
-                cells[(rows, col)].insert(0, solve[rows - 2][col - 1])
-            solvedLable.configure(text='Sudoku is SOLVED!')
+            for cols in range(1, 10):
+                cells[(rows, cols)].delete(0, "end")
+                cells[(rows, cols)].insert(0, solve[rows - 2][cols - 1])
+            solvedLabel.configure(text='Sudoku is SOLVED!')
     else:
         errorLabel.configure(text='Sudoku is UNSOLVABLE!')
 
+
 # Create buttons for solving and clearing the board
-getBtn = Button(window, command=getValues, text='Solve', width=10,
+getBtn = Button(window, command=access, text='Solve', width=10,
                 activebackground='light cyan', font=('Arial', 10, 'bold'))
-getBtn.grid(row=20, column=1, columnspan=5, pady=20)
+getBtn.grid(row=50, column=0, columnspan=5, pady=20)
 
 clearBtn = Button(window, command=clear, text='Clear', width=10,
                   activebackground='light cyan', font=('Arial', 10, 'bold'))
-clearBtn.grid(row=20, column=5, columnspan=5, pady=20)
-
+clearBtn.grid(row=50, column=3, columnspan=5, pady=20)
 
 
 # Main Loop

@@ -1,4 +1,3 @@
-
 # Checking whether the guess at the row/column of the grid  
 # is a valid guess and is safe to move
 def isSafeToMove(grid, row, col, guess):
@@ -54,4 +53,5 @@ def puzzleSolver(grid):
     if solveSudoku(grid, 0, 0):
         return grid
     else:
-        return "no"
+        return "solve"
+        
