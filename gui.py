@@ -46,13 +46,17 @@ def draw9x9Grid():
 
 ''' Update the values in Cells '''
 def update(sudoku):
+    startTime = time.time()
     solve = Solver(sudoku)
     if solve != "solve":
         for rows in range(2, 11):
             for cols in range(1, 10):
                 cells[(rows, cols)].delete(0, END)
                 cells[(rows, cols)].insert(0, solve[rows - 2][cols - 1])
+                endTime = time.time()
+                timeStamp = "Solved in {:.7f} seconds".format(endTime - startTime )
             solvedLabel.configure(text='Sudoku is SOLVED!')
+            timeLabel.configure(text=timeStamp)
     else:
         errorLabel.configure(text='Sudoku is UNSOLVABLE!')
 
@@ -63,13 +67,16 @@ Generates a completed sudoku
 (called by new button)
 '''
 def generate(sudoku):
+    startTime = time.time()
     new = Generator(sudoku)
     if new != "generate":
         for rows in range(2, 11):
             for cols in range(1, 10):
                 cells[(rows, cols)].delete(0, END)
                 cells[(rows, cols)].insert(0, new[rows - 2][cols - 1])
-                
+                endTime = time.time()
+                timeStamp = "Generated in {:.7f} seconds".format(endTime - startTime)
+            timeLabel.configure(text=timeStamp)
 
 
 ''' Create an unsolved sudoku puzzle '''
@@ -81,7 +88,9 @@ def scramble(sudoku):
             for cols in range(1, 10):
                 cells[(rows, cols)].delete(0, END)
                 cells[(rows, cols)].insert(0, new[rows - 2][cols - 1])
-                
+                endTime = time.time()
+                timeStamp = "Generated in {:.7f} seconds".format(endTime - startTime)
+            timeLabel.configure(text=timeStamp)
 
 
 ''' 
@@ -92,6 +101,7 @@ def solve():
     board= []
     errorLabel.configure(text="")
     solvedLabel.configure(text="")
+    timeLabel.configure(text="")
 
     for row in range(2, 11):
         rows = []
@@ -104,7 +114,7 @@ def solve():
 
         board.append(rows)
     
-    # This will update the board to its correct solution
+    ''' This will update the board to its correct solution '''
     update(board)
 
 
@@ -115,6 +125,7 @@ Function to generate solved sudoku puzzle
 def regenerate():
     errorLabel.configure(text="")
     solvedLabel.configure(text="")
+    timeLabel.configure(text="")
 
     grid = [[0 for r in range(9)] for c in range(9)]
                 
@@ -122,6 +133,7 @@ def regenerate():
         for c in range(9):
             grid[r][c] = 0
     
+    ''' This will generate a solved sudoku '''
     generate(grid)
 
 
@@ -132,9 +144,11 @@ Function to create new usolved sudoku puzzle
 def new():
     errorLabel.configure(text="")
     solvedLabel.configure(text="")
+    timeLabel.configure(text="")
 
     grid = [[0 for r in range(9)] for c in range(9)]
     
+    ''' This will create an unsolved sudoku'''
     scramble(grid)
 
 
@@ -145,6 +159,7 @@ Function to clear the board/cells
 def clear():
     errorLabel.configure(text="")
     solvedLabel.configure(text="")
+    timeLabel.configure(text="")
 
     for row in range(2, 11):
         for col in range(1, 10):
@@ -165,6 +180,10 @@ errorLabel.grid(row=20, column=1, columnspan=10, pady=10)
 ''' For solvable sudoku puzzle '''
 solvedLabel = Label(window, text="", fg="green", font=("Arial", 16))
 solvedLabel.grid(row=20, column=1, columnspan=10, pady=10)
+
+''' Display time of execution '''
+timeLabel = Label(window, text="", fg="black", font=("Arial", 10))
+timeLabel.grid(row=15, column=1, columnspan=10)
 
 
 ''' Buttons '''
