@@ -5,7 +5,7 @@ import time
 
 window = Tk()
 window.title("Sudoku Solver")
-window.geometry("370x580")
+window.geometry("370x520")
 
 
 ''' Making blank list to store all the entry widget cells '''
@@ -34,14 +34,14 @@ def draw3x3Grid(row, column, bgcolor):
 
 ''' Drawing a 9x9 Grid '''
 def draw9x9Grid():
-    color = "light yellow"
+    color = "white"
     for row in range(1, 10, 3):
         for col in range(0, 9 , 3):
             draw3x3Grid(row, col, color)
-            if color == "light yellow":
+            if color == "white":
                 color = "light cyan"
             else:
-                color = "light yellow"
+                color = "white"
 
 
 ''' Update the values in Cells '''
