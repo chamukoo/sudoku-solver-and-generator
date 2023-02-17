@@ -57,7 +57,7 @@ def updateSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, solve[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Solved in {:.12f} seconds".format(endTime - startTime )
+            timeStamp = "Solved in {:.18f} seconds".format(endTime - startTime )
             solvedLabel.configure(text='Sudoku is SOLVED!')
             timeLabel.configure(text=timeStamp)
     else:
@@ -77,7 +77,7 @@ def generateSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, new[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
+            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 
@@ -88,7 +88,6 @@ Level of Difficulty (Easy, Medium, Hard, Expert)
 
 def easySudoku(sudoku):
     startTime = time.time()
-
     easy = Easy(sudoku)
     if easy != "easy":
         for row in range(2, 11):
@@ -96,12 +95,11 @@ def easySudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, easy[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
+            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 def mediumSudoku(sudoku):
     startTime = time.time()
-
     medium = Medium(sudoku)
     if medium != "medium":
         for row in range(2, 11):
@@ -109,12 +107,11 @@ def mediumSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, medium[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
+            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 def hardSudoku(sudoku):
     startTime = time.time()
-
     hard = Hard(sudoku)
     if hard != "hard":
         for row in range(2, 11):
@@ -122,12 +119,11 @@ def hardSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, hard[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
+            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 def expertSudoku(sudoku):
     startTime = time.time()
-
     expert = Expert(sudoku)
     if expert != "expert":
         for row in range(2, 11):
@@ -135,7 +131,7 @@ def expertSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, expert[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
+            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 
@@ -184,7 +180,7 @@ def easy():
     solvedLabel.configure(text="")
     timeLabel.configure(text="")
 
-    grid = [[0 for r in range(9)] for c in range(9)]             
+    grid = [[0 for r in range(9)] for c in range(9)]    
     easySudoku(grid)
 
 ''' 
@@ -297,7 +293,7 @@ clearBtn = Button(window, command=clear, text='Clear',
 clearBtn.grid(row=30, column=6, columnspan=5, pady=5)
 
 
-''' Level Buttons '''
+''' Levels Buttons '''
 
 ''' Easy Button '''
 easyBtn = Button(window, command=easy, text='Easy',
