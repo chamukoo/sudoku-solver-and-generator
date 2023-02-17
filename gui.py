@@ -1,11 +1,12 @@
 from tkinter import *
-from solver import Solver, Generator, Puzzle
+from solver import Solver, Generator, Remove
 import time
 
 
 window = Tk()
 window.title("Sudoku Solver")
-window.geometry("370x520")
+window.geometry("370x580")
+window.configure(bg="black")
 
 
 ''' Making blank list to store all the entry widget cells '''
@@ -25,7 +26,8 @@ def draw3x3Grid(row, column, bgcolor):
     for i in range(3):
         for j in range(3):
             num = Entry(window, width=5, bg=bgcolor, fg='black', 
-                              font=('Arial', 10, 'bold'), justify='center', cursor="plus", 
+                              font=('Arial', 10, 'bold'), 
+                              justify='center', cursor="plus", 
                               validate='key', validatecommand=(reg, '%P'))
             num.grid(row = row + i + 1, column = column + j + 1, sticky='nsew', 
                            padx=1, pady=1, ipady=5)
@@ -45,16 +47,16 @@ def draw9x9Grid():
 
 
 ''' Update the values in Cells '''
-def update(sudoku):
+def updateSudoku(sudoku):
     startTime = time.time()
     solve = Solver(sudoku)
     if solve != "solve":
-        for rows in range(2, 11):
-            for cols in range(1, 10):
-                cells[(rows, cols)].delete(0, END)
-                cells[(rows, cols)].insert(0, solve[rows - 2][cols - 1])
+        for row in range(2, 11):
+            for col in range(1, 10):
+                cells[(row, col)].delete(0, END)
+                cells[(row, col)].insert(0, solve[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Solved in {:.7f} seconds".format(endTime - startTime )
+                timeStamp = "Solved in {:.12f} seconds".format(endTime - startTime )
             solvedLabel.configure(text='Sudoku is SOLVED!')
             timeLabel.configure(text=timeStamp)
     else:
@@ -66,30 +68,30 @@ Sudoku is in the correct format and is completly random
 Generates a completed sudoku 
 (called by new button)
 '''
-def generate(sudoku):
+def generateSudoku(sudoku):
     startTime = time.time()
     new = Generator(sudoku)
     if new != "generate":
-        for rows in range(2, 11):
-            for cols in range(1, 10):
-                cells[(rows, cols)].delete(0, END)
-                cells[(rows, cols)].insert(0, new[rows - 2][cols - 1])
+        for row in range(2, 11):
+            for col in range(1, 10):
+                cells[(row, col)].delete(0, END)
+                cells[(row, col)].insert(0, new[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.7f} seconds".format(endTime - startTime)
+                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 
 ''' Create an unsolved sudoku puzzle '''
-def scramble(sudoku):
+def createSudoku(sudoku):
     startTime = time.time()
-    new = Puzzle(sudoku)
-    if new != "puzzle":
-        for rows in range(2, 11):
-            for cols in range(1, 10):
-                cells[(rows, cols)].delete(0, END)
-                cells[(rows, cols)].insert(0, new[rows - 2][cols - 1])
+    new = Remove(sudoku)
+    if new != "remove":
+        for row in range(2, 11):
+            for col in range(1, 10):
+                cells[(row, col)].delete(0, END)
+                cells[(row, col)].insert(0, new[row - 2][col - 1])
                 endTime = time.time()
-                timeStamp = "Generated in {:.7f} seconds".format(endTime - startTime)
+                timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
 
@@ -115,7 +117,7 @@ def solve():
         board.append(rows)
     
     ''' This will update the board to its correct solution '''
-    update(board)
+    updateSudoku(board)
 
 
 '''
@@ -129,27 +131,27 @@ def regenerate():
 
     grid = [[0 for r in range(9)] for c in range(9)]
                 
-    for r in range(9):
-        for c in range(9):
-            grid[r][c] = 0
+    for row in range(9):
+        for col in range(9):
+            grid[row][col] = 0
     
     ''' This will generate a solved sudoku '''
-    generate(grid)
+    generateSudoku(grid)
 
 
 '''
 Function to create new usolved sudoku puzzle 
 (called by generate button)
 '''
-def new():
+def create():
     errorLabel.configure(text="")
     solvedLabel.configure(text="")
     timeLabel.configure(text="")
 
     grid = [[0 for r in range(9)] for c in range(9)]
-    
+                
     ''' This will create an unsolved sudoku'''
-    scramble(grid)
+    createSudoku(grid)
 
 
 '''
@@ -166,48 +168,67 @@ def clear():
             cells[(row, col)].delete(0, END)
 
 
-
 ''' Labels '''
 
-label = Label(window, text="Welcome to Sudoku Generator and Solver!",
-              font=("Helvetica", 12), fg="black", pady = 10)
+photo = PhotoImage(file='sudoku.png')
+label = Label(window,  pady = 10, padx=10,
+              fg="white", bg="black", 
+              font=("Helvetica", 12, "bold"), 
+              image=photo, compound='bottom')
 label.grid(row=0, column=1,columnspan=10)
 
 ''' For unsolvavble sudoku puzzle '''
-errorLabel = Label(window, text="", fg="red", font=("Arial", 16))
-errorLabel.grid(row=20, column=1, columnspan=10, pady=10)
+errorLabel = Label(window, text="", 
+                   fg="red", bg="black", 
+                   font=("Arial", 16, 'bold'))
+errorLabel.grid(row=20, column=1, columnspan=10, pady=5)
 
 ''' For solvable sudoku puzzle '''
-solvedLabel = Label(window, text="", fg="green", font=("Arial", 16))
-solvedLabel.grid(row=20, column=1, columnspan=10, pady=10)
+solvedLabel = Label(window, text="", 
+                    fg="green", bg="black", 
+                    font=("Arial", 16, 'bold'))
+solvedLabel.grid(row=20, column=1, columnspan=10, pady=5)
 
 ''' Display time of execution '''
-timeLabel = Label(window, text="", fg="black", font=("Arial", 10))
+timeLabel = Label(window, text="", 
+                  fg="white", bg="black", 
+                  font=("Arial", 10, 'bold'))
 timeLabel.grid(row=15, column=1, columnspan=10)
 
 
 ''' Buttons '''
 
 ''' For creating unsolved puzzle '''
-newBtn = Button(window, command=new, text='New Puzzle', width=12,
-                activebackground='light cyan', font=('Arial', 10, 'bold'))
-newBtn.grid(row=30, column=1, columnspan=5, pady=10)
+newBtn = Button(window, command=create, text='New Puzzle',
+                padx=6, pady=6, width=12, 
+                fg='white', bg='black',
+                activebackground='light cyan', 
+                font=('Arial', 10, 'bold'))
+newBtn.grid(row=30, column=1, columnspan=5, pady=5)
 
 ''' For solving the board '''
-solveBtn = Button(window, command=solve, text='Solve', width=12, 
-                activebackground='light cyan', font=('Arial', 10, 'bold'))
-solveBtn.grid(row=30, column=5, columnspan=5, pady=10)
+solveBtn = Button(window, command=solve, text='Solve', 
+                  padx=6, pady=6, width=12, 
+                  fg='white', bg='black', 
+                  activebackground='light cyan', 
+                  font=('Arial', 10, 'bold'))
+solveBtn.grid(row=30, column=5, columnspan=5, pady=5)
 
 ''' For generating new sudoku puzzle '''
-generateBtn = Button(window, command=regenerate, text='Generate', width=12,
-                activebackground='light cyan', font=('Arial', 10, 'bold'))
-generateBtn.grid(row=50, column=1, columnspan=5, pady=10)
+generateBtn = Button(window, command=regenerate, text='Generate', 
+                     padx=6, pady=6, width=12, 
+                     fg='white', bg='black', 
+                     activebackground='light cyan', 
+                     font=('Arial', 10, 'bold'))
+generateBtn.grid(row=50, column=1, columnspan=5, pady=5)
 
 ''' For clearing the board '''
-clearBtn = Button(window, command=clear, text='Clear', width=12, 
-                  activebackground='light cyan', font=('Arial', 10, 'bold'))
-clearBtn.grid(row=50, column=5, columnspan=5, pady=10)
-
+clearBtn = Button(window, command=clear, text='Clear', 
+                  padx=6, pady=6, width=12,  
+                  fg='white', bg='black', 
+                  activebackground='light cyan', 
+                  font=('Arial', 10, 'bold'))
+clearBtn.grid(row=50, column=5, columnspan=5, pady=5)
 
 
 ''' Main Loop '''

@@ -2,7 +2,7 @@ import random
 
 ''' 
 Checking whether the guess at the row/column of  
-the grid is a valid guess and is safe to move 
+the grid is a valid guess and if safe to move 
 '''
 def checkValidity(grid, row, col, guess):
 
@@ -60,13 +60,13 @@ def solveSudoku(grid, row, col):
         and try a new guess/number, reset to zero
         '''
         grid[row][col] = 0
-
+    
     return False
 
 
 ''' Generate completed sudoku puzzle '''
 def generateSudoku(grid, row, col):
-        num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        num = list(range(1, 10))
         if col == 9:
             if row == 8:
                 return True
@@ -103,23 +103,19 @@ def generateSudoku(grid, row, col):
         return False
 
 
-''' Create New Puzzle '''
-def createSudoku(grid, row, col):
+''' 
+Create new unsolved puzzle by removing numbers in cells
+'''
+def removeCells(grid, guess):
+    for i in range(guess):
+        row = random.randint(0, 8)
+        col = random.randint(0, 8)
+        
+        while grid[row][col] == 0:
+            row = random.randint(0, 8)
+            col = random.randint(0, 8)
 
-    ''' The range here is the amount of numbers in the grid '''
-    for r in range(1, 18):
-
-        ''' Choose random numbers '''
-        row = random.randrange(9)
-        col = random.randrange(9)
-        guess = random.randrange(1,10)
-
-        while not checkValidity(grid, row, col, guess) or grid[row][col] != 0:
-            row = random.randrange(9)
-            col = random.randrange(9)
-            guess = random.randrange(1,10)
-
-        grid[row][col] = guess
+        grid[row][col] = 0
 
     return grid
 
@@ -140,9 +136,9 @@ def Generator(grid):
         return "generate"
 
 
-''' Puzzle '''
-def Puzzle(grid):
-    if createSudoku(grid, 0, 0):
-        return grid
+''' Remover ''' 
+def Remove(grid):
+    if generateSudoku(grid, 0, 0):    
+        return removeCells(grid, 40)
     else:
-        return "puzzle"
+        return "remove"
