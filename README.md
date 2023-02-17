@@ -26,8 +26,7 @@ I included a four (4) difficulty levels (Easy, Medium, Hard, and Expert) to make
 
 I imported time module, then measured the execution time in solving and generating a sudoku puzzle using time() function. I decided to inlude this because this project has different levels and each generated puzzle is unique which would affect the execution time of every solved and generated board. Thus, I included this to determine how fast or slow (in milliseconds) it took to solve and generate each board using backtrack algorithm.
 
-![image](https://user-images.githubusercontent.com/95155301/219721293-6d3b6182-58f0-497e-ba9d-9487256752df.png)
-
+![image](https://user-images.githubusercontent.com/95155301/219746921-28f50551-b5d2-49fe-8f63-d6ae0c16a915.png)
 
 
 **4. Improved Tkinter GUI**
