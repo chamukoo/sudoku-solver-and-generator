@@ -1,6 +1,9 @@
 # Sudoku Generator and Solver in Python using Tkinter and Backtrack Algorithm
 This is a simple project for solving and generating Sudoku puzzle. This program allow users to input sudoku puzzle on the board, solve the board, clear the board, generate a solved sudoku puzzle, and generate an unsolved sudoku puzzle. In generating a new unsolved puzzle, the user can choose different difficulty levels such as easy, medium, hard, and expert.
 
+![image](https://user-images.githubusercontent.com/95155301/219721175-5b6e8eb0-a846-4438-a4d0-dd2f0402d615.png)
+
+
 
 ## The Original Project
 
@@ -23,6 +26,9 @@ I included a four (4) difficulty levels (Easy, Medium, Hard, and Expert) to make
 
 I imported time module, then measured the execution time in solving a sudoku puzzle and generating a sudoku puzzle using time() function. I decided to inlude this because this project has different levels and each generated puzzle is unique which would affect the execution time of every solved and generated board. Thus, I included this to determine how fast or slow it took to solve and generate a board using backtrack algorithm.
 
+![image](https://user-images.githubusercontent.com/95155301/219721293-6d3b6182-58f0-497e-ba9d-9487256752df.png)
+
+
 
 ***4. Improved Tkinter GUI***
 
@@ -30,7 +36,7 @@ I enhanced the Tkinter GUI by adding a photo, new buttons for the generator and 
 
 
 
-Disclaimer: The concept of this program was from ["Sharnav's Tech"](https://www.youtube.com/@SharnavTech) youtube channel and was modified and improved for educational purposes. 
+Disclaimer: The concept of this program was from [Sharnav's Tech](https://www.youtube.com/@SharnavTech) youtube channel and was modified and improved for educational purposes. 
 
 Links: 
 https://www.youtube.com/watch?v=xAXmfZmC2SI
