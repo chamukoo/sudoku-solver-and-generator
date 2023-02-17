@@ -65,8 +65,7 @@ def updateSudoku(sudoku):
 
 
 '''
-Sudoku is in the correct format and is completly random
-Generates a completed sudoku 
+Generates a random and completed sudoku 
 (called by new button)
 '''
 def generateSudoku(sudoku):
@@ -100,7 +99,6 @@ def easySudoku(sudoku):
                 timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
-
 def mediumSudoku(sudoku):
     startTime = time.time()
 
@@ -114,7 +112,6 @@ def mediumSudoku(sudoku):
                 timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
 
-
 def hardSudoku(sudoku):
     startTime = time.time()
 
@@ -127,7 +124,6 @@ def hardSudoku(sudoku):
                 endTime = time.time()
                 timeStamp = "Generated in {:.12f} seconds".format(endTime - startTime)
             timeLabel.configure(text=timeStamp)
-
 
 def expertSudoku(sudoku):
     startTime = time.time()
@@ -164,7 +160,6 @@ def solve():
         board.append(rows)
     updateSudoku(board)
 
-
 '''
 Function to generate solved sudoku puzzle 
 '''
@@ -179,7 +174,6 @@ def regenerate():
         for col in range(9):
             grid[row][col] = 0
     generateSudoku(grid)
-
 
 ''' 
 This will create an unsolved sudoku 
@@ -228,7 +222,6 @@ def expert():
 
     grid = [[0 for r in range(9)] for c in range(9)]          
     expertSudoku(grid)
-
 
 '''
 Function to clear the board/cells 

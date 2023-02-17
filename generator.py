@@ -4,34 +4,32 @@ from solver import generateSudoku
 ''' 
 Create new unsolved puzzle by removing numbers in cells
 '''
-def removeCells(grid, guess):
-    for i in range(guess):
+def createPuzzle(grid, num):   
+
+    while num > 0:
         row = random.randint(0, 8)
         col = random.randint(0, 8)
-        
-        while grid[row][col] == 0:
-            row = random.randint(0, 8)
-            col = random.randint(0, 8)
-
-        grid[row][col] = 0
-
+        if grid[row][col] != 0:
+            grid[row][col] = 0
+            num -= 1
     return grid
 
 
-''' Levels of Dificulty '''
+''' Levels of Difficulty '''
 
 ''' Easy Level''' 
 def Easy(grid):
-    if generateSudoku(grid, 0, 0):    
-        return removeCells(grid, 35)
+    if generateSudoku(grid, 0, 0):  
+        return createPuzzle(grid, 35)
     else:
         return "easy"
+   
     
 
 ''' Medium Level ''' 
 def Medium(grid):
-    if generateSudoku(grid, 0, 0):    
-        return removeCells(grid, 45)
+    if generateSudoku(grid, 0, 0):  
+        return createPuzzle(grid, 45)
     else:
         return "medium"
     
@@ -39,7 +37,7 @@ def Medium(grid):
 ''' Hard Level ''' 
 def Hard(grid):
     if generateSudoku(grid, 0, 0):    
-        return removeCells(grid, 55)
+        return createPuzzle(grid, 55)
     else:
         return "hard"
     
@@ -47,6 +45,6 @@ def Hard(grid):
 ''' Expert Level ''' 
 def Expert(grid):
     if generateSudoku(grid, 0, 0):    
-        return removeCells(grid, 65)
+        return createPuzzle(grid, 65)
     else:
         return "expert"
