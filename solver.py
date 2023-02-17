@@ -103,23 +103,6 @@ def generateSudoku(grid, row, col):
         return False
 
 
-''' 
-Create new unsolved puzzle by removing numbers in cells
-'''
-def removeCells(grid, guess):
-    for i in range(guess):
-        row = random.randint(0, 8)
-        col = random.randint(0, 8)
-        
-        while grid[row][col] == 0:
-            row = random.randint(0, 8)
-            col = random.randint(0, 8)
-
-        grid[row][col] = 0
-
-    return grid
-
-
 ''' Solver '''
 def Solver(grid):
     if solveSudoku(grid, 0, 0):
@@ -134,11 +117,3 @@ def Generator(grid):
         return grid
     else:
         return "generate"
-
-
-''' Remover ''' 
-def Remove(grid):
-    if generateSudoku(grid, 0, 0):    
-        return removeCells(grid, 40)
-    else:
-        return "remove"
