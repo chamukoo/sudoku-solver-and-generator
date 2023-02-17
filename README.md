@@ -33,7 +33,7 @@ I imported time module, then measured the execution time in solving and generati
 
 I enhanced the Tkinter GUI by adding a photo, new buttons for the generator and for the four (4) difficulty levels, as well as new label for the execution time so the users can see how many seconds it took to solve and generate a board.
 
-
+# 
 
 Disclaimer: The concept of this program was from [Sharnav's Tech](https://www.youtube.com/@SharnavTech) youtube channel and was modified and improved for educational purposes. 
 
