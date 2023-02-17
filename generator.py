@@ -20,16 +20,15 @@ def createPuzzle(grid, num):
 ''' Easy Level''' 
 def Easy(grid):
     if generateSudoku(grid, 0, 0):  
-        return createPuzzle(grid, 35)
+        return createPuzzle(grid, 34)
     else:
         return "easy"
    
-    
 
 ''' Medium Level ''' 
 def Medium(grid):
     if generateSudoku(grid, 0, 0):  
-        return createPuzzle(grid, 45)
+        return createPuzzle(grid, 44)
     else:
         return "medium"
     
@@ -37,7 +36,7 @@ def Medium(grid):
 ''' Hard Level ''' 
 def Hard(grid):
     if generateSudoku(grid, 0, 0):    
-        return createPuzzle(grid, 55)
+        return createPuzzle(grid, 54)
     else:
         return "hard"
     
@@ -45,6 +44,6 @@ def Hard(grid):
 ''' Expert Level ''' 
 def Expert(grid):
     if generateSudoku(grid, 0, 0):    
-        return createPuzzle(grid, 65)
+        return createPuzzle(grid, 64)
     else:
         return "expert"
