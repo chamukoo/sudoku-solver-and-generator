@@ -1,6 +1,6 @@
 from tkinter import *
-from solver import Solver, Generator
-from generator import Easy, Medium, Hard, Expert
+from solver import Solver
+from generator import Easy, Medium, Hard, Expert, Generator
 import time
 
 
@@ -57,7 +57,8 @@ def updateSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, solve[row - 2][col - 1])
                 endTime = time.time()
-            timeStamp = "Solved in {:.18f} seconds".format(endTime - startTime )
+                calcTime = (endTime - startTime) * 1000 
+            timeStamp = "Solved in {:.15f} milliseconds".format(calcTime)
             solvedLabel.configure(text='Sudoku is SOLVED!')
             timeLabel.configure(text=timeStamp)
     else:
@@ -77,7 +78,8 @@ def generateSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, new[row - 2][col - 1])
                 endTime = time.time()
-            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
+                calcTime = (endTime - startTime) * 1000 
+            timeStamp = "Generated in {:.15f} milliseconds".format(calcTime)
             timeLabel.configure(text=timeStamp)
 
 
@@ -95,7 +97,8 @@ def easySudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, easy[row - 2][col - 1])
                 endTime = time.time()
-            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
+                calcTime = (endTime - startTime) * 1000 
+            timeStamp = "Generated in {:.15f} milliseconds".format(calcTime)
             timeLabel.configure(text=timeStamp)
 
 def mediumSudoku(sudoku):
@@ -107,7 +110,8 @@ def mediumSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, medium[row - 2][col - 1])
                 endTime = time.time()
-            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
+                calcTime = (endTime - startTime) * 1000 
+            timeStamp = "Generated in {:.15f} milliseconds".format(calcTime)
             timeLabel.configure(text=timeStamp)
 
 def hardSudoku(sudoku):
@@ -119,7 +123,8 @@ def hardSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, hard[row - 2][col - 1])
                 endTime = time.time()
-            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
+                calcTime = (endTime - startTime) * 1000 
+            timeStamp = "Generated in {:.15f} milliseconds".format(calcTime)
             timeLabel.configure(text=timeStamp)
 
 def expertSudoku(sudoku):
@@ -131,7 +136,8 @@ def expertSudoku(sudoku):
                 cells[(row, col)].delete(0, END)
                 cells[(row, col)].insert(0, expert[row - 2][col - 1])
                 endTime = time.time()
-            timeStamp = "Generated in {:.18f} seconds".format(endTime - startTime)
+                calcTime = (endTime - startTime) * 1000 
+            timeStamp = "Generated in {:.15f} milliseconds".format(calcTime)
             timeLabel.configure(text=timeStamp)
 
 
