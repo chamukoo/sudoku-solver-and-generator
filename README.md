@@ -12,7 +12,7 @@ The [orginal project](https://www.youtube.com/watch?v=xAXmfZmC2SI) only solve an
 
 ## Modifications I Made to Improve the Code
 
-***1. Sudoku Generator***
+**1. Sudoku Generator**
 
 Using backtrack algorithm and random module to uniquely generate solved sudoku puzzle, and unsolved soduku puzzle with varying levels.
 
