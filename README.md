@@ -1,44 +1,110 @@
-# Sudoku Generator and Solver in Python using Tkinter and Backtrack Algorithm
-This is a simple project for solving and generating Sudoku puzzle. This program allow users to input sudoku puzzle on the board, solve the board, clear the board, generate a solved sudoku puzzle, and generate an unsolved sudoku puzzle. In generating a new unsolved puzzle, the user can choose different difficulty levels such as easy, medium, hard, and expert.
+# Sudoku Generator and Solver in Python using Tkinter and Backtracking Algorithm
 
-![image](https://user-images.githubusercontent.com/95155301/219721175-5b6e8eb0-a846-4438-a4d0-dd2f0402d615.png)
+This is a simple yet powerful Sudoku project built in Python using Tkinter for the GUI and the Backtracking Algorithm for solving Sudoku puzzles. The program allows users to input, solve, clear, and generate Sudoku puzzles, with options to create puzzles at various difficulty levels (Easy, Medium, Hard, and Expert).
 
+![Sudoku GUI](https://user-images.githubusercontent.com/95155301/219721175-5b6e8eb0-a846-4438-a4d0-dd2f0402d615.png)
+
+## Features
+
+1. **Input Puzzle**: Users can manually input a Sudoku puzzle on the board.
+2. **Solve Puzzle**: Automatically solve any valid Sudoku puzzle using the Backtracking Algorithm.
+3. **Clear Board**: Clear the board to input a new puzzle.
+4. **Generate Puzzle**: Generate both solved and unsolved Sudoku puzzles.
+5. **Difficulty Levels**: Choose from Easy, Medium, Hard, and Expert difficulty levels for unsolved puzzles.
+6. **Execution Time**: Display how long it takes to generate or solve each puzzle.
+
+---
 
 ## The Original Project
 
-The [orginal project](https://www.youtube.com/watch?v=xAXmfZmC2SI) only solve and clear the board using backtracking algorithm, and it also has GUI.
+This project is based on a tutorial by [Sharnav's Tech](https://www.youtube.com/@SharnavTech), which demonstrated how to solve Sudoku using the Backtracking Algorithm and included a basic Tkinter GUI.
 
+You can view the original project here:  
+[Sudoku Solver in Python - Sharnav's Tech](https://www.youtube.com/watch?v=xAXmfZmC2SI)
 
-## Modifications I Made to Improve the Code
+---
 
-**1. Sudoku Generator**
+## Modifications and Improvements
 
-Using backtrack algorithm and random module to uniquely generate solved sudoku puzzle, and unsolved soduku puzzle with varying levels.
+### 1. **Sudoku Puzzle Generator**
 
-#
+I added functionality to generate random Sudoku puzzles using the Backtracking Algorithm and the `random` module. The generator creates both solved and unsolved puzzles, ensuring that each puzzle is unique.
 
-**2. Levels of Difficulty**
+### 2. **Difficulty Levels**
 
-I included a four (4) difficulty levels (Easy, Medium, Hard, and Expert) to make this program more challenging, and to demonstrate how backtrack algorithm works in solving different levels of sudoku puzzle. The Easy level has 34 empty cells, Medium level has 44 empty cells, Hard level has 54 empty cells, and Expert level has 64 empty cells. 
+The unsolved puzzles can be generated at four levels of difficulty:
+- **Easy**: 34 empty cells
+- **Medium**: 44 empty cells
+- **Hard**: 54 empty cells
+- **Expert**: 64 empty cells
 
-#
+This makes the program more engaging and showcases how the Backtracking Algorithm performs across different levels of complexity.
 
-**3. Execution Time of Program**
+### 3. **Execution Time Display**
 
-I imported time module, then measured the execution time in solving and generating a sudoku puzzle using time() function. I decided to inlude this because this project has different levels and each generated puzzle is unique which would affect the execution time of every solved and generated board. Thus, I included this to determine how fast or slow (in milliseconds) it took to solve and generate each board using backtrack algorithm.
+I incorporated the `time` module to measure the execution time for solving and generating Sudoku puzzles. This feature helps users understand the performance of the algorithm, especially when working with puzzles of different difficulty levels.
 
-![image](https://user-images.githubusercontent.com/95155301/219746921-28f50551-b5d2-49fe-8f63-d6ae0c16a915.png)
+Execution time is shown in milliseconds, allowing users to see how fast or slow the Backtracking Algorithm solves or generates a puzzle based on the number of empty cells and the randomness of the puzzle.
 
-#
+![Execution Time Example](https://user-images.githubusercontent.com/95155301/219746921-28f50551-b5d2-49fe-8f63-d6ae0c16a915.png)
 
-**4. Improved Tkinter GUI**
+### 4. **Enhanced Tkinter GUI**
 
-I enhanced the Tkinter GUI by adding a photo, new buttons for the generator and for the four (4) difficulty levels, as well as new label for the execution time so the users can see how many seconds it took to solve and generate a board.
+The GUI has been improved for a more polished user experience:
+- Added background images for visual appeal.
+- New buttons for generating puzzles and selecting difficulty levels.
+- A label to display the execution time for solving and generating puzzles.
+- Cleaner layout for better usability.
 
-#
+---
 
-Disclaimer: The concept of this program was from [Sharnav's Tech](https://www.youtube.com/@SharnavTech) youtube channel and was modified and improved for educational purposes. 
+## Installation and Usage
 
-Links: 
-https://www.youtube.com/watch?v=xAXmfZmC2SI
-https://www.youtube.com/watch?v=OF0H0B0IuFM&t=72s
+### Prerequisites
+- Python 3.x
+- `tkinter` (should be included with Python)
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/sudoku-generator-solver.git
+cd sudoku-generator-solver
+```
+
+Install any required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Running the Program
+
+Run the `sudoku.py` file to launch the program:
+
+```bash
+python sudoku.py
+```
+
+### Controls
+
+- **Input Puzzle**: Manually enter numbers on the Sudoku grid.
+- **Solve Puzzle**: Click the "Solve" button to solve the current board.
+- **Clear Board**: Click the "Clear" button to reset the board.
+- **Generate Solved Puzzle**: Click "Generate Solved Puzzle" to create a fully solved Sudoku board.
+- **Generate Unsolved Puzzle**: Select a difficulty level (Easy, Medium, Hard, Expert) to generate a new Sudoku puzzle with missing cells.
+
+---
+
+## Acknowledgments
+
+- The original concept and code were derived from [Sharnav's Tech](https://www.youtube.com/@SharnavTech) on YouTube.
+- Modifications were made to add features for generating puzzles, introducing difficulty levels, improving the GUI, and displaying execution time for educational purposes.
+
+For more details, you can check out the related tutorial:  
+[How to Solve Sudoku using Python](https://www.youtube.com/watch?v=xAXmfZmC2SI)
+
+--- 
+
+Feel free to contribute to this project by submitting issues or pull requests.
